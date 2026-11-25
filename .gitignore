@@ -1,0 +1,20 @@
+# Dependencias y artefactos
+node_modules/
+.next/
+out/
+dist/
+
+# Entorno
+.env
+.env.local
+.env.*.local
+!.env.example
+
+# Sistema y editores
+.DS_Store
+Thumbs.db
+*.log
+
+# Laravel (Fase B)
+/version-b/vendor/
+/version-b/storage/*.key
