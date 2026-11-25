@@ -130,6 +130,8 @@ Construye por fases y verifica cada una antes de pasar a la siguiente.
 - Nunca des una tarea por terminada si el build falla o la memoria no está actualizada.
 - actualizar `MEMORY.md` al terminar cada tarea.
 - Mantén los READMEs de cada versión al día: instalación, comandos dev/build, versiones de Node/PHP/Composer, supuestos y mejoras.
+- **Principio de simplicidad moderada**: no sobre-ingenierizar; los componentes deben repetirse ≥3 veces antes de extraerse; funciones puras en `lib/` para lógica compartida; tipos discriminados en lugar de interfaces complejas; sin `any`. Documenta toda reducción de alcance en `DECISIONS.md`.
+- **Componentes reusables**: los elementos que pueden ser separados en componentes deben crear componentes reutilizables en `components/`, importarlos al componente padre y exportarlos según sea el caso. No repetir estructura en múltiples componentes; extraer y abstraer proactivamente.
 - Código profesional, accesible y mantenible; comentarios en español.
 
 ## 10. Definición de "terminado"

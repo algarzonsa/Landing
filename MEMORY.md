@@ -15,7 +15,7 @@
 | Fase | Estado |
 |---|---|
 | 1. Análisis de la referencia + decisiones de diseño (tokens, componentes, dataset JSON) | ✅ |
-| 2. Versión A completa + verificación (build, lint, tipos, responsive, a11y) | 🟨 |
+| 2. Versión A completa + verificación (build, lint, tipos, responsive, a11y) | ✅ |
 | 3. Versión B con mismo diseño y dataset + verificación | ⬜ |
 | 4. Comparación visual A vs B y ajustes de paridad | ⬜ |
 | 5. READMEs, limpieza, `.gitignore`, `.env.example` | ⬜ |
@@ -43,7 +43,7 @@
 | Lint / `tsc --noEmit` (solo A) | ✅ | n/a |
 | Responsive 375 / 768 / 1280+ | ✅ | ⬜ |
 | Accesibilidad (teclado, foco, contraste, alt) | ✅ | ⬜ |
-| Lighthouse (Perf ≥ 90, A11y ≥ 95) | 🟨 | ⬜ |
+| Lighthouse (Perf ≥ 90, A11y ≥ 95) | ✅ | ⬜ |
 
 ### Entregables
 
@@ -73,6 +73,8 @@ Formato: fecha · decisión · motivo.
 | 2026-11-24 | Fondo de página: retícula de 72 px + lavado radial de acento | Motivo de hoja de registro psicométrica, sutil y coherente con la marca |
 | 2026-11-24 | Header: buscador y "Accedi" abren diálogos nativos; el carrito vacío informa su estado | Evitar controles muertos; "Accedi" sigue siendo solo visual como pide la prueba |
 | 2026-11-24 | Simplificación moderada: 9 productos en lugar de 12, sin scripts de sincronización, sin persistencia compleja | Principio de código limpio, solid y patrones de diseño manteniendo simplicidad moderada |
+| 2026-11-24 | Componentes reusables: `Navbar.tsx` y `NavbarMobile.tsx` creados, importados en `Header.tsx`, regla añadida a AGENTS.md sobre separar elementos en componentes reusables | Evita duplicación de estructura, facilita mantenimiento, coherente con los principios de simplicidad y código profesional |
+| 2026-11-24 | Franja de Black Friday en Header: "Black Friday" (#F9CE23), "Sconti fino al -30%", "Scopri le offerte" centralizados | Cambio de diseño aplicado siguiendo principios de branding, centralización y espaciado sólido |
 
 ### Decisiones pendientes
 

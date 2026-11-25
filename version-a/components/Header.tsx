@@ -8,15 +8,15 @@ import { useCatalog } from "@/components/CatalogProvider";
 import { SearchField } from "@/components/SearchField";
 import {
   BagIcon,
-  ChevronRightIcon,
   CloseIcon,
   MenuIcon,
   TrashIcon,
   UserIcon,
 } from "@/components/Icons";
-import { NAV_LINKS } from "@/data/navigation";
 import { PRODOTTI } from "@/data/products";
 import { formatPrezzo } from "@/lib/format";
+import { Navbar } from "@/components/Navbar";
+import { NavbarMobile } from "@/components/NavbarMobile";
 
 /** Marca propia de la demo: curva de distribución, sin reproducir el logo real. */
 function Brand({ onNavigate }: { onNavigate?: () => void }) {
@@ -81,21 +81,16 @@ export function Header() {
   return (
     <>
       <div className="bg-primary text-white">
-        <div className="shell flex h-9 items-center justify-between gap-4">
-          <p className="truncate text-[12.5px] tracking-[0.005em] text-white/95">
-            Spedizione gratuita per ordini superiori a 120 €
-          </p>
-          <div className="hidden shrink-0 items-center gap-4 text-[12.5px] sm:flex">
-            <a
-              href="#contatti"
-              className="text-white/90 underline-offset-4 transition-colors hover:text-white hover:underline focus-visible:outline-white"
-            >
-              Assistenza
-            </a>
-            <span aria-hidden="true" className="h-3 w-px bg-white/25" />
-            <span className="text-white/75">Italiano</span>
-            <span className="text-white/75">EUR</span>
-          </div>
+        <div className="shell flex h-14 items-center justify-center gap-8">
+          <span className="text-[15px] font-medium text-[#F9CE23] whitespace-nowrap hover:underline cursor-pointer">
+            Black Friday
+          </span>
+          <span className="text-[15px] font-medium text-white whitespace-nowrap hover:underline cursor-pointer">
+            Sconti fino al -30%
+          </span>
+          <span className="text-[15px] font-medium text-white whitespace-nowrap hover:underline cursor-pointer">
+            Scopri le offerte
+          </span>
         </div>
       </div>
 
@@ -103,21 +98,7 @@ export function Header() {
         <div className="shell flex h-[68px] items-center gap-4 lg:h-[76px] lg:gap-8">
           <Brand onNavigate={() => setMenuAperto(false)} />
 
-          <nav aria-label="Navigazione principale" className="hidden flex-1 lg:block">
-            <ul className="flex items-center justify-center gap-7 xl:gap-9">
-              {NAV_LINKS.map((link) => (
-                <li key={link.label}>
-                  <a
-                    href={link.href}
-                    onClick={() => handleNavClick(link.label)}
-                    className="relative inline-flex py-2 text-[15px] font-medium text-ink-soft transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-primary hover:after:scale-x-100 focus-visible:text-primary"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <Navbar onNavClick={handleNavClick} />
 
           <div className="ml-auto flex shrink-0 items-center gap-2">
             <div className="hidden w-52 lg:block xl:w-60">
@@ -188,22 +169,7 @@ export function Header() {
             <div className="shell pb-6 pt-5">
               <SearchField onSearch={() => setMenuAperto(false)} />
 
-              <nav aria-label="Navigazione principale" className="mt-4">
-                <ul>
-                  {NAV_LINKS.map((link) => (
-                    <li key={link.label}>
-                      <a
-                        href={link.href}
-                        onClick={() => handleNavClick(link.label)}
-                        className="group flex items-center justify-between border-b border-line py-3.5 text-[17px] font-medium text-ink transition-colors hover:text-primary"
-                      >
-                        {link.label}
-                        <ChevronRightIcon className="h-4 w-4 text-ink-soft transition-transform group-hover:translate-x-0.5 group-hover:text-primary" />
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </nav>
+              <NavbarMobile onNavClick={handleNavClick} />
 
               <button
                 type="button"
