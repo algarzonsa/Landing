@@ -128,6 +128,7 @@ Construye por fases y verifica cada una antes de pasar a la siguiente.
 - Ante ambigüedad: documenta el supuesto en `memory/ASSUMPTIONS.md` y avanza; no te detengas a preguntar salvo que sea bloqueante.
 - No agregues dependencias nuevas sin justificarlas en `memory/DECISIONS.md`.
 - Nunca des una tarea por terminada si el build falla o la memoria no está actualizada.
+- actualizar `MEMORY.md` al terminar cada tarea.
 - Mantén los READMEs de cada versión al día: instalación, comandos dev/build, versiones de Node/PHP/Composer, supuestos y mejoras.
 - Código profesional, accesible y mantenible; comentarios en español.
 

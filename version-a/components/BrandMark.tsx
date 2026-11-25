@@ -1,7 +1,4 @@
-/**
- * Marca propia de la demo: una curva de distribución sobre una línea base.
- * No reproduce el logo de Giunti Psychometrics.
- */
+/** Marca propia de la demo: curva de distribución, sin reproducir el logo real. */
 export function BrandMark({ className }: { className?: string }) {
   return (
     <svg

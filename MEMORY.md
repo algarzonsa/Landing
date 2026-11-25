@@ -10,13 +10,11 @@
 
 ## 1. PROGRESS: Estado por sección y versión
 
-Leyenda: ⬜ pendiente · 🟨 en curso · ✅ hecho
-
 ### Fases del plan
 
 | Fase | Estado |
 |---|---|
-| 1. Análisis de la referencia + decisiones de diseño (tokens, componentes, dataset JSON) | 🟨 |
+| 1. Análisis de la referencia + decisiones de diseño (tokens, componentes, dataset JSON) | ✅ |
 | 2. Versión A completa + verificación (build, lint, tipos, responsive, a11y) | 🟨 |
 | 3. Versión B con mismo diseño y dataset + verificación | ⬜ |
 | 4. Comparación visual A vs B y ajustes de paridad | ⬜ |
@@ -27,14 +25,14 @@ Leyenda: ⬜ pendiente · 🟨 en curso · ✅ hecho
 
 | Sección | Versión A (Next.js) | Versión B (Laravel) |
 |---|---|---|
-| Header (nav, "Accedi", buscador, menú móvil) | 🟨 | ⬜ |
-| Hero (título, descripción, CTA, fondo) | 🟨 | ⬜ |
-| Grilla de productos (cards, 3/2/1 col) | ⬜ | ⬜ |
-| Filtro por categoría + buscador combinados, vacío y contador | ⬜ | ⬜ |
-| Formulario de contacto (validación + éxito) | ⬜ | ⬜ |
-| Footer | ⬜ | ⬜ |
-| Dataset JSON (≥ 8 productos, ≥ 3 categorías) | ⬜ | ⬜ |
-| Mejoras propuestas (2 o 3) | ⬜ | ⬜ |
+| Header (nav, "Accedi", buscador, menú móvil) | ✅ | ⬜ |
+| Hero (título, descripción, CTA, fondo) | ✅ | ⬜ |
+| Grilla de productos (cards, 3/2/1 col) | ✅ | ⬜ |
+| Filtro por categoría + buscador combinados, vacío y contador | ✅ | ⬜ |
+| Formulario de contacto (validación + éxito) | ✅ | ⬜ |
+| Footer | ✅ | ⬜ |
+| Dataset JSON (≥ 8 productos, ≥ 3 categorías) | ✅ | ⬜ |
+| Mejoras propuestas (%, carrito, orden) | ✅ | ⬜ |
 | README de la versión | ⬜ | ⬜ |
 
 ### Verificaciones
@@ -43,9 +41,9 @@ Leyenda: ⬜ pendiente · 🟨 en curso · ✅ hecho
 |---|---|---|
 | Build | ✅ | ⬜ |
 | Lint / `tsc --noEmit` (solo A) | ✅ | n/a |
-| Responsive 375 / 768 / 1280+ | 🟨 | ⬜ |
-| Accesibilidad (teclado, foco, contraste, alt) | 🟨 | ⬜ |
-| Lighthouse (Perf ≥ 90, A11y ≥ 95) | ⬜ | ⬜ |
+| Responsive 375 / 768 / 1280+ | ✅ | ⬜ |
+| Accesibilidad (teclado, foco, contraste, alt) | ✅ | ⬜ |
+| Lighthouse (Perf ≥ 90, A11y ≥ 95) | 🟨 | ⬜ |
 
 ### Entregables
 
@@ -74,6 +72,7 @@ Formato: fecha · decisión · motivo.
 | 2026-11-24 | Tipografías: Newsreader (display) + IBM Plex Sans (texto/UI) | Identidad editorial científica distinta de la referencia; paridad futura con Google Fonts en B |
 | 2026-11-24 | Fondo de página: retícula de 72 px + lavado radial de acento | Motivo de hoja de registro psicométrica, sutil y coherente con la marca |
 | 2026-11-24 | Header: buscador y "Accedi" abren diálogos nativos; el carrito vacío informa su estado | Evitar controles muertos; "Accedi" sigue siendo solo visual como pide la prueba |
+| 2026-11-24 | Simplificación moderada: 9 productos en lugar de 12, sin scripts de sincronización, sin persistencia compleja | Principio de código limpio, solid y patrones de diseño manteniendo simplicidad moderada |
 
 ### Decisiones pendientes
 
@@ -109,7 +108,7 @@ Formato: fecha · decisión · motivo.
 
 ## 4. CHANGELOG: Registro de cambios
 
-Formato: fecha · cambio · archivos afectados.
+Formato: fecha · cambio · archivos.
 
 | Fecha | Cambio | Archivos |
 |---|---|---|
@@ -120,3 +119,5 @@ Formato: fecha · cambio · archivos afectados.
 | 2026-11-24 | Header completo: barra de anuncio, marca propia, nav, buscador, "Accedi" y carrito con diálogos accesibles, menú móvil; hero con titular e índice de ámbitos | `version-a/components/layout/*`, `version-a/components/sections/Hero.tsx`, `version-a/components/ui/*`, `version-a/app/page.tsx`, `version-a/data/*`, `version-a/types/catalog.ts` |
 | 2026-11-24 | Script `typecheck` y `.gitignore` raíz; build, lint y tipos verificados sin errores | `version-a/package.json`, `.gitignore` |
 | 2026-11-24 | Correcciones tras revisión visual en 375/768/1280: "Accedi" oculto correctamente en móvil, sin desbordes horizontales, menú opaco, objetivos táctiles de 44 px y curva de la marca suavizada | `version-a/components/layout/*`, `version-a/components/ui/button-styles.ts`, `version-a/components/layout/BrandMark.tsx` |
+| 2026-11-24 | Simplificación moderada: consolidación a 9 productos, estructura de componentes plana, dataset tipado único, eliminación de capas innecesarias; tipos discriminados test/curso, validador de datos en compilación, filtros por categoría y búsqueda client-side, orden por precio/nombre, carrito con diálogo, formulario con validación accesible, footer con enlaces completos. | `version-a/components/*`, `version-a/data/*`, `version-a/lib/*`, `version-a/types/*` |
+| 2026-11-24 | Build, lint y tipos verificados sin errores; Lighthouse captura en 375/768/1280; dataset con 9 productos reales (4 categorías, test+curso); dialogs nativos accesibles | `version-a/app/`, `version-a/components/`, `version-a/data/`, `version-a/lib/`, `version-a/types/` |
