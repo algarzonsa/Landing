@@ -1,0 +1,110 @@
+[
+    {
+        "id": 1,
+        "nome": "Test Batteria Dislessia",
+        "autore": "Mario Rossi",
+        "categoria": "Clinica e Neuropsicologia",
+        "formato": "Cartaceo",
+        "etaRange": "6-10 anni",
+        "prezzoOriginale": 45.50,
+        "prezzoScontato": 32.00,
+        "immagine": "test-dislessia.jpg",
+        "alt": "Cover Test Batteria Dislessia"
+    },
+    {
+        "id": 2,
+        "nome": "Matrici Progressive Raven",
+        "autore": "Maria Bianchi",
+        "categoria": "Clinica e Neuropsicologia",
+        "formato": "Digitale",
+        "etaRange": "8-14 anni",
+        "prezzoOriginale": 38.00,
+        "prezzoScontato": 26.50,
+        "immagine": "ravens.jpg",
+        "alt": "Matrici Progressive Raven"
+    },
+    {
+        "id": 3,
+        "nome": "Scalas de Inteligencia Verbal",
+        "autore": "Luigi Verdi",
+        "categoria": "Scuola ed Età evolutiva",
+        "formato": "Cartaceo",
+        "etaRange": "6-12 anni",
+        "prezzoOriginale": 52.00,
+        "prezzoScontado": 38.50,
+        "immagine": "inteligencia-verbal.jpg",
+        "alt": "Scalas de Inteligencia Verbal"
+    },
+    {
+        "id": 4,
+        "nome": "Observación de la Conducta en Escuela",
+        "autore": "Giulia Neri",
+        "categoria": "Scuola ed Età evolutiva",
+        "formato": "In presenza",
+        "dataInizio": "2026-02-15",
+        "precioOriginale": 40.00,
+        "precioScontado": 28.00,
+        "immagine": "conducta-escuela.jpg",
+        "alt": "Observación de la Conducta en Escuela"
+    },
+    {
+        "id": 5,
+        "nome": "Formación en Habilidades Sociales",
+        "autore": "Marco Gallo",
+        "categoria": "Lavoro e Organizzazioni",
+        "formato": "Corso online",
+        "dataInicio": "2026-03-01",
+        "precioOriginale": 65.00,
+        "precioScontado": 45.00,
+        "immagine": "habilidades-sociales.jpg",
+        "alt": "Formación en Habilidades Sociales"
+    },
+    {
+        "id": 6,
+        "nome": "Liderazgo y Trabajo en Equipo",
+        "autore": "Sara Romano",
+        "categoria": "Lavoro e Organizzaciones",
+        "formato": "In presencia",
+        "dataInicio": "2026-04-10",
+        "precioOriginale": 70.00,
+        "precioScontado": 49.00,
+        "immagine": "liderazgo-equipo.jpg",
+        "alt": "Liderazgo y Trabajo en Equipo"
+    },
+    {
+        "id": 7,
+        "nome": "Test de Aptitud Vocacional",
+        "autore": "Andrea Costa",
+        "categoria": "Formazione",
+        "formato": "Digitale",
+        "etaRange": "15-20 años",
+        "precioOriginale": 55.00,
+        "precioScontado": 41.00,
+        "immagine": "aptitud-vocacional.jpg",
+        "alt": "Test de Aptitud Vocacional"
+    },
+    {
+        "id": 8,
+        "nome": "Guía de Orientación Profesional",
+        "autore": "Federica Rosa",
+        "categoria": "Formación",
+        "formato": "Cartaceo",
+        "etaRange": "18-25 años",
+        "precioOriginale": 48.00,
+        "precioScontado": 35.00,
+        "immagine": "orientacion-profesional.jpg",
+        "alt": "Guía de Orientación Profesional"
+    },
+    {
+        "id": 9,
+        "nome": "Evaluación de Riesgos Psicosociales",
+        "autore": "Paolo Gallo",
+        "categoria": "Lavoro e Organizzaciones",
+        "formato": "In presenza",
+        "dataInicio": "2026-05-01",
+        "precioOriginale": 60.00,
+        "precioScontado": 42.00,
+        "immagine": "riesgos-psicosociales.jpg",
+        "alt": "Evaluación de Riesgos Psicosociales"
+    }
+]

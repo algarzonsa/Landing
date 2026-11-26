@@ -4,7 +4,6 @@ import { BagIcon, CheckIcon } from "@/components/Icons";
 import { formatData, formatPrezzo, scontoPercentuale } from "@/lib/format";
 import type { Prodotto } from "@/types/product";
 
-/** Tarjeta de producto. Toda la información viene del dataset tipado. */
 export function ProductCard({ prodotto }: { prodotto: Prodotto }) {
   const { carrello, aggiungiAlCarrello } = useCatalog();
   const nelCarrello = carrello.includes(prodotto.id);
@@ -54,11 +53,11 @@ export function ProductCard({ prodotto }: { prodotto: Prodotto }) {
             <p className="text-[12.5px] text-ink-soft line-through">
               {formatPrezzo(prodotto.prezzoOriginale)}
             </p>
-            <p className="mt-0.5 text-[22px] font-semibold tracking-[-0.01em] text-ink">
+            <p className="mt-0.5 text-[22px] font-semibold tracking-[-0.01em] text-success">
               {formatPrezzo(prodotto.prezzoScontato)}
             </p>
           </div>
-          <span className="mb-1 rounded-full bg-accent px-2.5 py-1 text-[12px] font-semibold leading-none text-ink">
+          <span className="mb-1 rounded-full bg-success-soft px-2.5 py-1 text-[12px] font-semibold leading-none text-success">
             −{sconto}%
           </span>
         </div>

@@ -4,7 +4,7 @@
 
 ## 1. Resumen del proyecto
 
-Prueba técnica take-home (Frontend Developer) para **Giunti Psychometrics**: una landing de catálogo de productos (tests psicológicos y cursos de formación para profesionales) de **Giunti Psychometrics Italia**, en **dos versiones visualmente equivalentes**, que debe **superar** la referencia visual en calidad, navegación y rendimiento.
+Proyecto (Frontend Developer) para **Giunti Psychometrics**: una landing de catálogo de productos (tests psicológicos y cursos de formación para profesionales) de **Giunti Psychometrics Italia**, en **dos versiones visualmente equivalentes**, que debe **superar** la referencia visual en calidad, navegación y rendimiento.
 
 | Versión | Carpeta | Stack |
 |---|---|---|
@@ -69,7 +69,13 @@ Reglas:
 | Texto | `#0F2D52` |
 | Acento | `#0EA5E9` |
 | Fondo | `#EFF6FF` |
+| Violeta | `#D8CAF5` |
+| Verde éxito | `#15803D` |
+| Verde éxito suave | `#DCFCE7` |
 
+- Gradientes siempre con variables `var(--color-*)`; prohibido hex sueltos.
+- Enlaces externos siempre con `target="_blank"` y `rel="noopener noreferrer"`.
+- Desplegables accesibles: apertura por hover, foco y click; cierre con `Escape`; `aria-haspopup`/`aria-expanded` correctos y foco visible.
 - Ambas versiones deben verse **esencialmente iguales**.
 - Responsive: **375 px, 768 px, 1280 px+**. Grilla **3 / 2 / 1** columnas.
 - Accesibilidad **WCAG 2.1 AA**: contraste (verificar texto sobre `#1B4F8A` y `#0EA5E9`), teclado, foco visible, skip link, `alt` en imágenes, landmarks semánticos, un solo `h1`.
@@ -89,10 +95,11 @@ Reglas:
 - **jQuery** para filtros, buscador y validación; JS en **archivos separados, sin inline**.
 - Laravel Mix o Gulp (indicar cuál), con comando de producción minificado.
 - Ruta única `/` que renderiza la landing con los datos.
+- **Seguridad web en Versión B**: prevención de XSS (usar `htmlspecialchars()` en Blade y escapar automáticamente con `{{ $variable }}`), prevención de CSRF (`@csrf` en formularios), política de contenido (`Content-Security-Policy` en meta tags), prevención de clickjacking (`X-Frame-Options: SAMEORIGIN`).
 
 ## 5. Secciones obligatorias (en A y B)
 
-1. **Header**: logo/texto "Giunti Psychometrics"; nav (Test, Formazione, Risorse, Contatti); botón "Accedi" (solo visual); buscador que filtra la grilla por nombre; menú móvil accesible.
+1. **Header**: franja superior de utilidades ("Spedizioni gratuite per gli ordini online" + enlaces Corporate/Aiuto + desplegable "Accesso alla piattaforma"), separada por una línea fina gris; debajo, logo/texto "Giunti Psychometrics"; nav (Test, Formazione, Risorse, Contatti); botón "Accedi" (solo visual); buscador que filtra la grilla por nombre; menú móvil accesible.
 2. **Hero**: título, descripción corta, CTA "Esplora il catalogo" (ancla a la grilla), fondo con gradiente o imagen.
 3. **Grilla de productos**: card con imagen, nombre, autor/docente, rango de edad o fecha de inicio, precio original (tachado) + precio con descuento destacado, badge de formato, botón "Scopri di più" o "Aggiungi al carrello"; estados hover y focus visibles.
 4. **Filtro por categoría**: pills/tabs/sidebar con "Tutti"; client-side sin recarga; combinable con el buscador; estado vacío ("Nessun prodotto trovato") y contador de resultados.

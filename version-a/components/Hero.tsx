@@ -1,27 +1,37 @@
+import Image from "next/image";
 import {
   ArrowUpRightIcon,
   ChevronRightIcon,
 } from "@/components/Icons";
 import { CATEGORIE, PRODOTTI } from "@/data/products";
 
-/**
- * Portada editorial: titular serif, descripción breve y un índice de ámbitos
- * que funciona como antesala del catálogo.
- */
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="relative">
+    <section
+      aria-labelledby="hero-title"
+      className="relative isolate overflow-hidden"
+    >
+      <Image
+        src="/images/header/bg-header.jpg"
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="-z-20 object-cover"
+      />
+      <div aria-hidden="true" className="hero-overlay absolute inset-0 -z-10" />
+
       <div className="shell pb-16 pt-14 sm:pb-20 sm:pt-20 lg:pb-24 lg:pt-24">
         <div className="grid items-start gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16">
           <div>
             <h1
               id="hero-title"
-              className="max-w-[16ch] text-balance font-display text-[clamp(2.75rem,6.2vw,4.5rem)] font-medium leading-[0.98] tracking-[-0.022em] text-ink"
+              className="max-w-[16ch] text-balance font-display text-[clamp(2.75rem,6.2vw,4.5rem)] font-medium leading-[0.98] tracking-[-0.022em] text-white"
             >
               Ogni valutazione comincia da un ascolto.
             </h1>
 
-            <p className="mt-6 max-w-[56ch] text-[17px] leading-7 text-ink-soft sm:mt-7 sm:text-lg sm:leading-8">
+            <p className="mt-6 max-w-[56ch] text-[17px] leading-7 text-white sm:mt-7 sm:text-lg sm:leading-8">
               Test, manuali e formazione per psicologi, scuole e organizzazioni.
               Strumenti selezionati con rigore scientifico, pensati per capire le
               persone e accompagnarle nel cambiamento.
@@ -39,7 +49,7 @@ export function Hero() {
           </div>
 
           <aside aria-labelledby="ambiti-title">
-            <div className="rounded-md border border-line bg-paper/75 p-6 shadow-panel backdrop-blur-[2px] sm:p-7">
+            <div className="rounded-md border border-line bg-paper p-6 shadow-panel sm:p-7">
               <h2
                 id="ambiti-title"
                 className="border-b border-line pb-4 font-display text-[19px] font-semibold tracking-[-0.01em] text-ink"

@@ -1,0 +1,209 @@
+// Stylus main file - Giunti Psychometrics Version B
+@import '_variables';
+
+// Mixins
+@mixin make-clearfix() {
+    &::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+}
+
+// Global base
+html {
+    @include make-clearfix;
+    box-sizing: border-box;
+}
+*, *:before, *:after { box-sizing: inherit; }
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background-color: var(--color-surface);
+    background-image:
+      radial-gradient(56rem 34rem at 88% -12%, var(--color-accent) 16%, transparent 72%),
+      var(--color-line) 72px 72px,
+      var(--color-line) 72px 72px;
+    background-size: auto, 72px 72px, 72px 72px;
+    background-repeat: no-repeat, repeat, repeat;
+}
+
+// Extend variables as CSS custom properties (for Blade)
+@each $name, $value in $variables {
+    .is-#{$name} { --#{ $name }: #{$value}; }
+}
+
+// Header
+@import 'components/_header';
+
+// Product card
+@import 'components/_product-card';
+
+// Hero
+@import 'components/_hero';
+
+// Form
+@import 'components/_form';
+
+// Footer
+@import 'components/_footer';
+
+// Buttons
+.btn {
+    display: inline-flex;
+    height: 2.75rem;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-sm);
+    padding-inline: 1.25rem;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1;
+    transition: background-color 150ms ease, border-color 150ms ease;
+    &:not(:disabled),
+    [role="button"]:not(:disabled) {
+        cursor: pointer;
+    }
+    &--primary {
+        background: var(--color-primary);
+        color: #fff;
+        &:hover { background: var(--color-primary-deep); }
+    }
+    &--secondary {
+        border: 1px solid var(--color-line-strong);
+        background: color-mix(in oklab, var(--color-paper) 72%, transparent);
+        color: var(--color-ink);
+        &:hover { border-color: var(--color-primary); background: color-mix(in oklab, #fff 82%, transparent); }
+    }
+}
+
+// Navigation
+.navbar {
+    @extend .hidden lg:block;
+    ul {
+        @extend .flex items-center justify-center gap-7 xl:gap-9;
+        li {
+            a {
+                @extend .relative inline-flex py-2 text-[15px] font-medium text-ink-soft transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-primary hover:after:scale-x-100 focus-visible:text-primary;
+            }
+        }
+    }
+}
+
+// Top bar
+.top-bar {
+    @extend .border-b .border-line;
+    @extend .bg-paper/90;
+    @extend .flex.h-10.items-center.justify-between.gap-6;
+    p {
+        @extend .truncate.text-[13px].text-ink-soft;
+    }
+    .links {
+        @extend .hidden.shrink-0.items-center.gap-5.md.flex;
+        a {
+            @extend .text-[13px].font-medium.text-ink-soft.transition-colors.hover.text-primary.focus-visible.text-primary;
+        }
+    }
+    .platform-menu {
+        @extend .relative.group;
+        button {
+            @extend .inline-flex.items-center.gap-1.5.text-[13px].font-medium.text-ink-soft.transition-colors.hover.text-primary.focus-visible.text-primary;
+        }
+        .menu {
+            @extend .absolute.right-0.top-full.z-50.w-64.pt-2.transition.duration-150.md.block.hidden;
+            ul {
+                @extend .rounded-sm.border.border-line.bg-paper.p-1;
+                li {
+                    a {
+                        @extend .block.rounded-sm.px-3.py-2.text-[13px].font-medium.text-ink-soft.transition-colors.hover.bg-surface.hover.text-primary.focus-visible.bg-surface.focus-visible.text-primary;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// Product card
+.product-card {
+    @extend .flex.h-full.flex-col.overflow-hidden.rounded-md.border.border-line.bg-white.transition-[border-color,box-shadow].hover.border-line-strong.hover:shadow-panel.focus-within:border-line-strong;
+    img {
+        @extend .h-full.w-full.object-cover.transition-transform.duration-500.group-hover:scale-[1.03];
+    }
+    .category {
+        @extend .text-[12px].font-medium.text-accent-deep;
+    }
+    .price-sale {
+        @extend .mt-0.5.text-[22px].font-semibold.tracking-[-0.01em].text-success;
+    }
+    .price-badge {
+        @extend .mb-1.rounded-full.bg-success-soft.px-2.5.py-1.text-[12px].font-semibold.leading-none.text-success;
+    }
+    .original-price {
+        @extend .text-[12.5px].text-ink-soft.line-through;
+    }
+}
+
+// Hero
+.hero-section {
+    @extend .relative.py-16.pt-14.sm:py-20.sm:pt-20.lg:pb-24.lg:pt-24;
+    .hero-overlay {
+        @extend .absolute.inset-0.-z-10;
+    }
+    .grid {
+        @extend .grid.items-start.gap-12.lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)].lg:gap-16;
+    }
+    .product-card {
+        @extend .product-card;
+    }
+}
+
+// Form
+.form-group {
+    @extend .mb-4;
+    label {
+        @extend .block.text-[13px].font-medium.text-ink.mb-2;
+    }
+    input,
+    textarea {
+        @extend .w-full.rounded-md.border.border-line.bg-surface.px-4.py-3.text-[13px].font-medium.text-ink.focus:border-primary.focus:outline-none.focus:ring-2.focus:ring-primary/20;
+    }
+    .error {
+        @extend .text-red-500.text-[12px].mt-2.hidden;
+    }
+    input.valid,
+    textarea.valid {
+        border-color: var(--color-success);
+    }
+}
+
+// Footer
+.footer {
+    @extend .mt-12.border-t.border-line.bg-paper/80.py-8;
+    .copyright {
+        @extend .text-sm.text-ink-soft;
+    }
+    a {
+        @extend .text-ink-soft.hover.text-primary.transition-colors;
+    }
+}
+
+// Grid de productos
+.grid-productos {
+    @extend .grid.grid-cols-1.sm:grid-cols-2.lg:grid-cols-3.gap-6;
+}
+
+// Category buttons
+.categoria-btn {
+    @extend .btn.btn--secondary.text-[12px].px-4.py-2;
+    &.active {
+        @extend .bg-primary.text-white;
+    }
+}
+
+// Focus visible (global)
+*:focus-visible {
+    outline: 2px solid var(--color-accent-deep);
+    outline-offset: 3px;
+}

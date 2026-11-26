@@ -17,8 +17,8 @@ import { PRODOTTI } from "@/data/products";
 import { formatPrezzo } from "@/lib/format";
 import { Navbar } from "@/components/Navbar";
 import { NavbarMobile } from "@/components/NavbarMobile";
+import { TopBar } from "@/components/TopBar";
 
-/** Marca propia de la demo: curva de distribución, sin reproducir el logo real. */
 function Brand({ onNavigate }: { onNavigate?: () => void }) {
   return (
     <a
@@ -27,15 +27,7 @@ function Brand({ onNavigate }: { onNavigate?: () => void }) {
       aria-label="Giunti Psychometrics, vai all'inizio della pagina"
       className="flex shrink-0 items-center gap-2.5 sm:gap-3"
     >
-      <BrandMark className="h-9 w-9 shrink-0 sm:h-10 sm:w-10" />
-      <span className="flex flex-col">
-        <span className="font-display text-[21px] font-semibold leading-none tracking-[-0.01em] text-ink sm:text-[23px]">
-          Giunti
-        </span>
-        <span className="mt-1 font-sans text-[10px] font-medium uppercase leading-none tracking-[0.22em] text-ink-soft">
-          Psychometrics
-        </span>
-      </span>
+      <BrandMark className="h-9 max-w-44 shrink-0 sm:h-12 sm:w-46" />
     </a>
   );
 }
@@ -80,21 +72,36 @@ export function Header() {
 
   return (
     <>
-      <div className="bg-primary text-white">
+      <div className="bg-primary-dark text-white">
         <div className="shell flex h-14 items-center justify-center gap-8">
-          <span className="text-[15px] font-medium text-[#F9CE23] whitespace-nowrap hover:underline cursor-pointer">
+          <a
+            href="https://www.giuntipsy.com/it-it/test"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[15px] font-medium text-[#F9CE23] whitespace-nowrap hover:underline cursor-pointer"
+          >
             Black Friday
-          </span>
-          <span className="text-[15px] font-medium text-white whitespace-nowrap hover:underline cursor-pointer">
+          </a>
+          <a 
+          href="https://www.giuntipsy.com/it-it/test"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[15px] font-medium text-white whitespace-nowrap hover:underline cursor-pointer">
             Sconti fino al -30%
-          </span>
-          <span className="text-[15px] font-medium text-white whitespace-nowrap hover:underline cursor-pointer">
+          </a>
+          <a 
+            href="https://www.giuntipsy.com/it-it/test"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[15px] font-medium text-white whitespace-nowrap hover:underline cursor-pointer">
             Scopri le offerte
-          </span>
+          </a>
         </div>
       </div>
 
       <header className="sticky top-0 z-50 border-b border-line/80 bg-paper/85 backdrop-blur-md">
+        <TopBar />
+
         <div className="shell flex h-[68px] items-center gap-4 lg:h-[76px] lg:gap-8">
           <Brand onNavigate={() => setMenuAperto(false)} />
 
@@ -164,7 +171,7 @@ export function Header() {
         {menuAperto && (
           <div
             id={menuPanelId}
-            className="absolute inset-x-0 top-full max-h-[calc(100dvh-7rem)] overflow-y-auto border-t border-line bg-paper shadow-panel lg:hidden"
+            className="absolute inset-x-0 top-full max-h-[calc(100dvh-10.5rem)] overflow-y-auto border-t border-line bg-paper shadow-panel lg:hidden"
           >
             <div className="shell pb-6 pt-5">
               <SearchField onSearch={() => setMenuAperto(false)} />
