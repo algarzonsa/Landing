@@ -2,7 +2,6 @@ import type { SVGProps } from "react";
 
 type IconProps = SVGProps<SVGSVGElement>;
 
-/** Iconos de trazo propios, sin librerías externas. */
 function baseProps(props: IconProps): IconProps {
   return {
     viewBox: "0 0 24 24",
@@ -72,6 +71,14 @@ export function ChevronRightIcon(props: IconProps) {
   return (
     <svg {...baseProps(props)}>
       <path d="m9.5 6 6 6-6 6" />
+    </svg>
+  );
+}
+
+export function ChevronDownIcon(props: IconProps) {
+  return (
+    <svg {...baseProps(props)}>
+      <path d="m6 9.5 6 6 6-6" />
     </svg>
   );
 }

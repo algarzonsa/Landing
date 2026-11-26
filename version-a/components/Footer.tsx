@@ -63,15 +63,7 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-12">
           <div>
             <div className="flex items-center gap-3">
-              <BrandMark className="h-10 w-10" />
-              <span className="flex flex-col">
-                <span className="font-display text-[22px] font-semibold leading-none tracking-[-0.01em] text-white">
-                  Giunti
-                </span>
-                <span className="mt-1 text-[10px] font-medium uppercase leading-none tracking-[0.22em] text-white/60">
-                  Psychometrics
-                </span>
-              </span>
+              <BrandMark className="h-10 w-36" />
             </div>
 
             <p className="mt-5 max-w-[34ch] text-sm leading-6 text-white/70">
