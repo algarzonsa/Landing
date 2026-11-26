@@ -1,22 +1,21 @@
 @import "tailwindcss";
 
-/*
- * Tokens de la landing.
- * Los cuatro colores de marca son la base; el resto son derivados
- * documentados (hover, texto secundario, líneas y superficies).
- */
 @theme {
   --color-primary: #1b4f8a;
   --color-primary-deep: #143c6a;
+  --color-primary-dark:#1f2847;
   --color-ink: #0f2d52;
   --color-ink-soft: #3f5875;
   --color-accent: #0ea5e9;
   --color-accent-deep: #0b6e9e;
   --color-surface: #eff6ff;
   --color-paper: #fafcff;
+  --color-violet: #d8caf5;
   --color-line: #cfdeed;
   --color-line-strong: #a9c4dc;
   --color-danger: #b3261e;
+  --color-success: #15803d;
+  --color-success-soft: #dcfce7;
 
   --radius-sm: 10px;
   --radius-md: 16px;
@@ -41,10 +40,6 @@
     color: var(--color-ink);
     font-family: var(--font-sans);
     background-color: var(--color-surface);
-    /*
-     * Fondo editorial: retícula fina de 72 px (idea de hoja de registro)
-     * y un lavado radial de acento en la esquina superior derecha.
-     */
     background-image:
       radial-gradient(
         56rem 34rem at 88% -12%,
@@ -89,10 +84,6 @@
   }
 }
 
-/*
- * Piezas compartidas. Se definen una sola vez para que header, catálogo,
- * formulario y footer no diverjan en tamaños ni estados.
- */
 @layer components {
   .shell {
     width: 100%;
@@ -104,6 +95,31 @@
   @media (min-width: 640px) {
     .shell {
       padding-inline: 2rem;
+    }
+  }
+
+  /**
+   * Velo de legibilidad sobre la imagen de fondo del Hero. Es más claro
+   * donde vive el texto y se abre hacia el panel lateral; así la imagen
+   * se ve, pero el texto conserva contraste AA.
+   */
+  .hero-overlay {
+    background-image: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--color-paper) 90%, transparent) 0%,
+      color-mix(in oklab, var(--color-paper) 82%, transparent) 55%,
+      color-mix(in oklab, var(--color-paper) 58%, transparent) 100%
+    );
+  }
+
+  @media (min-width: 1024px) {
+    .hero-overlay {
+      background-image: linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--color-paper) 88%, transparent) 0%,
+        color-mix(in oklab, var(--color-paper) 76%, transparent) 52%,
+        color-mix(in oklab, var(--color-paper) 45%, transparent) 100%
+      );
     }
   }
 

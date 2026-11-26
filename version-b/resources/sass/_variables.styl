@@ -1,0 +1,131 @@
+// Stylus tokens - Giunti Psychometrics
+// Color palette (same as Version A for parity)
+--color-primary: #1b4f8a
+--color-primary-deep: #143c6a
+--color-primary-dark: #1f2847
+--color-ink: #0f2d52
+--color-ink-soft: #3f5875
+--color-accent: #0ea5e9
+--color-accent-deep: #0b6e9e
+--color-surface: #eff6ff
+--color-paper: #fafcff
+--color-line: #cfdeed
+--color-line-strong: #a9c4dc
+--color-danger: #b3261e
+--color-success: #15803d
+--color-success-soft: #dcfce7
+--color-violet: #d8caf5
+
+// Layout
+--radius-sm: 10px
+--radius-md: 16px
+--radius-lg: 22px
+
+// Shadows
+--shadow-panel: 0 24px 60px -40px rgb(15 45 82 / 0.45)
+
+// Componentes - Header
+.hero-overlay {
+    background-image: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--color-paper) 90%, transparent) 0%,
+      color-mix(in oklab, var(--color-paper) 82%, transparent) 55%,
+      color-mix(in oklab, var(--color-paper) 58%, transparent) 100%
+    );
+
+    @media (min-width: 1024px) {
+      background-image: linear-gradient(
+        90deg,
+        color-mix(in oklab, var(--color-paper) 88%, transparent) 0%,
+        color-mix(in oklab, var(--color-paper) 76%, transparent) 52%,
+        color-mix(in oklab, var(--color-paper) 45%, transparent) 100%
+      );
+    }
+}
+
+.hero-backdrop {
+    // Legacy: kept for reference; Version B uses .hero-overlay
+}
+
+// Top bar
+.top-bar {
+    border-bottom 1px solid var(--color-line);
+    background-color: var(--color-paper/90);
+}
+
+// Navbar BEM
+.navbar {
+    @extend .hidden lg:block;
+    ul {
+        @extend .flex items-center justify-center gap-7 xl:gap-9;
+        li {
+            a {
+                @extend .relative inline-flex py-2 text-[15px] font-medium text-ink-soft transition-colors after:absolute after:inset-x-0 after:-bottom-0.5 after:h-px after:origin-left after:scale-x-0 after:bg-primary after:transition-transform hover:text-primary hover:after:scale-x-100 focus-visible:text-primary;
+            }
+        }
+    }
+}
+
+// Product card
+.product-card {
+    @extend .flex h-full flex-col overflow-hidden rounded-md border border-line bg-white transition-[border-color,box-shadow] hover:border-line-strong hover:shadow-panel focus-within:border-line-strong;
+    img {
+        @extend .h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03];
+    }
+    .category {
+        @extend .text-[12px] font-medium text-accent-deep;
+    }
+    .price-sale {
+        @extend .mt-0.5 text-[22px] font-semibold tracking-[-0.01em] text-success;
+    }
+    .price-badge {
+        @extend .mb-1 rounded-full bg-success-soft px-2.5 py-1 text-[12px] font-semibold leading-none text-success;
+    }
+    .original-price {
+        @extend .text-[12.5px] text-ink-soft line-through;
+    }
+}
+
+// Hero
+.hero-section {
+    @include .relative py-16 pt-14 sm:py-20 sm:pt-20 lg:pb-24 lg:pt-24;
+    .hero-overlay {
+        @include .absolute inset-0 -z-10;
+    }
+    .grid {
+        @include .grid items-start gap-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-16;
+    }
+    .product-card {
+        @extend .product-card;
+    }
+}
+
+// Form form styles
+.form-group {
+    @extend .mb-4;
+    label {
+        @extend .block text-[13px] font-medium text-ink mb-2;
+    }
+    input,
+    textarea {
+        @extend .w-full rounded-md border border-line bg-surface px-4 py-3 text-[13px] font-medium text-ink focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20;
+    }
+    .error {
+        @extend .text-red-500 text-[12px] mt-2 hidden;
+    }
+    input.valid,
+    textarea.valid {
+        border-color: var(--color-success);
+    }
+}
+
+// Footer
+.footer {
+    @extend .mt-12 border-t border-line bg-paper/80 py-8;
+    .copyright {
+        @extend .text-sm text-ink-soft;
+    }
+    a {
+        @extend .text-ink-soft hover:text-primary transition-colors;
+    }
+}

@@ -4,7 +4,7 @@
 > Reglas: solo añadir o corregir entradas; no borrar ni reescribir el historial.
 > Si prefieres archivos separados, cada sección equivale a `memory/PROGRESS.md`, `memory/DECISIONS.md`, `memory/ASSUMPTIONS.md` y `memory/CHANGELOG.md`.
 
-Última actualización: 2026-11-24
+Última actualización: 2026-11-25
 
 ---
 
@@ -25,8 +25,8 @@
 
 | Sección | Versión A (Next.js) | Versión B (Laravel) |
 |---|---|---|
-| Header (nav, "Accedi", buscador, menú móvil) | ✅ | ⬜ |
-| Hero (título, descripción, CTA, fondo) | ✅ | ⬜ |
+| Header (franja de utilidades, nav, "Accedi", buscador, menú móvil) | ✅ | ⬜ |
+| Hero (título, descripción, CTA, imagen de fondo con velo de legibilidad) | ✅ | ⬜ |
 | Grilla de productos (cards, 3/2/1 col) | ✅ | ⬜ |
 | Filtro por categoría + buscador combinados, vacío y contador | ✅ | ⬜ |
 | Formulario de contacto (validación + éxito) | ✅ | ⬜ |
@@ -75,6 +75,14 @@ Formato: fecha · decisión · motivo.
 | 2026-11-24 | Simplificación moderada: 9 productos en lugar de 12, sin scripts de sincronización, sin persistencia compleja | Principio de código limpio, solid y patrones de diseño manteniendo simplicidad moderada |
 | 2026-11-24 | Componentes reusables: `Navbar.tsx` y `NavbarMobile.tsx` creados, importados en `Header.tsx`, regla añadida a AGENTS.md sobre separar elementos en componentes reusables | Evita duplicación de estructura, facilita mantenimiento, coherente con los principios de simplicidad y código profesional |
 | 2026-11-24 | Franja de Black Friday en Header: "Black Friday" (#F9CE23), "Sconti fino al -30%", "Scopri le offerte" centralizados | Cambio de diseño aplicado siguiendo principios de branding, centralización y espaciado sólido |
+| 2026-11-25 | Enlace a sección Test sobre "Black Friday" en el Header, con `target="_blank"` y `rel="noopener noreferrer"` | Evitar que la página externa acceda a `window.opener`; abrir la referencia sin perder la demo |
+| 2026-11-25 | Franja superior de utilidades dentro del `<header>` sticky (envío + Corporate/Aiuto + desplegable de plataformas), separada por 1px con token `--color-line` | Replicar la estructura de la referencia sin copiar textos/marcas; divisor con token, no hex |
+| 2026-11-25 | `PlatformMenu` reutilizable (props `label`, `links`, `variant`, `onNavigate`); abre con hover, foco y click, cierra con `Escape`; datos en `data/navigation.ts` | Componente reutilizable y accesible por teclado; fuente única de datos |
+| 2026-11-25 | En móvil (<768 px) los enlaces Corporate/Aiuto/plataformas pasan al menú hamburguesa | Evitar desbordes a 375 px y garantizar objetivos táctiles |
+| 2026-11-25 | Hero con degradado lavanda → azul marino: vertical en pantallas apiladas (<1024 px) y horizontal en desktop; token nuevo `--color-lavender: #E9E6F8` y azul marino reutilizando `--color-primary-dark` | El corte responsive mantiene el texto siempre sobre lavanda (contraste AA): en desktop el texto se limita a la columna izquierda; en móvil el navy queda bajo la tarjeta opaca |
+| 2026-11-25 | Ajuste de paleta del Hero: lavanda → violeta `--color-violet: #D8CAF5` y azul marino → `--color-primary` (`#1B4F8A`) | Petición del cliente; el violeta claro mantiene contraste AA con `ink-soft` (~4.8:1) y el azul primario refuerza la identidad de marca |
+| 2026-11-25 | Descuentos en verde claro: tokens `--color-success: #15803D` y `--color-success-soft: #DCFCE7`; precio rebajado en verde y badge `−%` con fondo verde suave | Petición del cliente; el verde de texto sobre blanco (~5:1) y sobre el fondo suave (~4.6:1) cumple AA |
+| 2026-11-25 | Hero con imagen de fondo `public/images/header/bg-header.jpg` vía `next/image` (`fill`, `priority`, `alt=""`) y velo `.hero-overlay` con `color-mix` de `--color-paper` | La imagen violeta/teal no da contraste al texto; el velo claro mantiene AA y deja ver la textura. `next/image` optimiza el LCP |
 
 ### Decisiones pendientes
 
@@ -123,3 +131,10 @@ Formato: fecha · cambio · archivos.
 | 2026-11-24 | Correcciones tras revisión visual en 375/768/1280: "Accedi" oculto correctamente en móvil, sin desbordes horizontales, menú opaco, objetivos táctiles de 44 px y curva de la marca suavizada | `version-a/components/layout/*`, `version-a/components/ui/button-styles.ts`, `version-a/components/layout/BrandMark.tsx` |
 | 2026-11-24 | Simplificación moderada: consolidación a 9 productos, estructura de componentes plana, dataset tipado único, eliminación de capas innecesarias; tipos discriminados test/curso, validador de datos en compilación, filtros por categoría y búsqueda client-side, orden por precio/nombre, carrito con diálogo, formulario con validación accesible, footer con enlaces completos. | `version-a/components/*`, `version-a/data/*`, `version-a/lib/*`, `version-a/types/*` |
 | 2026-11-24 | Build, lint y tipos verificados sin errores; Lighthouse captura en 375/768/1280; dataset con 9 productos reales (4 categorías, test+curso); dialogs nativos accesibles | `version-a/app/`, `version-a/components/`, `version-a/data/`, `version-a/lib/`, `version-a/types/` |
+| 2026-11-25 | Enlace a https://www.giuntipsy.com/it-it/test sobre "Black Friday" en el Header, en pestaña nueva | `version-a/components/Header.tsx` |
+| 2026-11-25 | `BrandMark` usa `guinti-logo.png` local (`public/images/header/`) con `next/image` en lugar del SVG | `version-a/components/BrandMark.tsx` |
+| 2026-11-25 | Franja de utilidades (`TopBar`), desplegable `PlatformMenu`, fila reutilizable `NavLinkRow` y datos `TOP_BAR_LINKS`/`PLATFORM_LINKS`; enlaces movidos al menú móvil. Verificación: typecheck/lint/build ✅ | `version-a/components/TopBar.tsx`, `version-a/components/PlatformMenu.tsx`, `version-a/components/NavLinkRow.tsx`, `version-a/components/NavbarMobile.tsx`, `version-a/components/Header.tsx`, `version-a/components/Icons.tsx`, `version-a/data/navigation.ts`, `AGENTS.md` |
+| 2026-11-25 | Hero: degradado lavanda → azul marino con clase reutilizable `.hero-backdrop`, token `--color-lavender`; tarjeta lateral opaca sin blur. Verificación: typecheck/lint/build ✅ | `version-a/components/Hero.tsx`, `version-a/app/globals.css`, `AGENTS.md` |
+| 2026-11-25 | Hero: paleta ajustada a violeta `#D8CAF5` → azul primario `#1B4F8A` (token renombrado a `--color-violet`). Verificación: build ✅ | `version-a/app/globals.css`, `AGENTS.md` |
+| 2026-11-25 | Descuentos en verde: precio rebajado `text-success` y badge `−%` en `bg-success-soft` con texto verde; tokens `--color-success`/`--color-success-soft`. Verificación: build ✅ | `version-a/components/ProductCard.tsx`, `version-a/app/globals.css`, `AGENTS.md` |
+| 2026-11-25 | Hero: fondo reemplazado por `bg-header.jpg` con `next/image` (`fill`, `priority`) y velo `.hero-overlay` responsive en lugar del degradado. Verificación: typecheck/lint/build ✅ | `version-a/components/Hero.tsx`, `version-a/app/globals.css` |

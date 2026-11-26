@@ -8,7 +8,6 @@ interface SearchFieldProps {
   onSearch?: () => void;
 }
 
-/** Buscador compartido por el header y el catálogo. */
 export function SearchField({ onSearch }: SearchFieldProps) {
   const { query, setQuery } = useCatalog();
   const inputId = useId();

@@ -5,7 +5,6 @@ export interface CategoriaInfo {
   descrizione: string;
 }
 
-/** Fuente única del catálogo. */
 export const PRODOTTI = [
   {
     id: "profilo-cognitivo-evolutivo",

@@ -5,7 +5,6 @@ interface NavbarProps {
   onNavClick: (label: string) => void;
 }
 
-/** Navigazione principale del Header - reutilizable. */
 export function Navbar({ onNavClick }: NavbarProps) {
   const navId = useId();
 
